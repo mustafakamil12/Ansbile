@@ -2,4 +2,30 @@
 
 
 
-===============================================================Start Of Git Phase=================================================
+================================================================ Introduction ====================================================
+
+# Why Ansible:
+	i. Provisioning
+	ii. Configuration Management
+	iii. Continuous Delivery
+	iv. Application Deployment
+	v. Security Compliance
+
+# There many of examples that Ansible really can be the most powerfull tool to use with:
+	i. if u have many web servers and database servers, you need to reboot these servers, u can write a play book to start power off the web servers first and then power off the database servers and then power on db servers and then web servers.
+
+	ii. another good one, if u have a complex infrastructure that span cross public and private clouds running 100's of vms. u can easly spin vms in both clouds as well u can connect Ansible to db or service now so it will spin up asap.
+
+# all recoired info are in: https://docs.ansible.com/
+
+================================================================== Setup Lab =====================================================
+
+# we will use VirtualBox to set the lab.
+	i. we will create multiple vms for the lab
+		- Template: will be used to create the other requierd vms
+		- Ansible controller
+		- target01
+		- target02
+	ii. we will use pre installed and pre configured virtual images on --> osboxes.org
+
+	iii. in the osboxes select VM Images --> VirtualBox Images --> CentOS --> download the latest version and 64
