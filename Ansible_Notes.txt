@@ -52,4 +52,8 @@
 		- sudo vi /etc/hosts    --> host ansiblecontroller
 		- sudo shutdown now -r
 
+	vii. install ansible on the controller
+		- sudo yum install ansible or sudo pip3 install ansible
+		- ansible --version
+
 
