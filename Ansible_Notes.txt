@@ -29,3 +29,27 @@
 	ii. we will use pre installed and pre configured virtual images on --> osboxes.org
 
 	iii. in the osboxes select VM Images --> VirtualBox Images --> CentOS --> download the latest version and 64
+		- Username: osboxes
+		- Password: osboxes.org
+		- Root Account Password: osboxes.org
+
+	iv. configuration:
+		- Name: centos-template
+		- type: linux
+		- version: other linux 64
+		- Memory: 2048 MB
+		- processor: 2
+		- network: bridge
+
+	v. clone from the template:
+		- Name: ansibel-controller / ansible-target1 /ansible-target2
+		- path: /Users/mustafaalogaidi/VirtualBox VMs
+		- Mac Address Policy: Generate new MAC address for all network adapters
+		- Linked Clone
+
+	vi. change host name
+		- sudo vi /etc/hostname --> ansiblecontroller
+		- sudo vi /etc/hosts    --> host ansiblecontroller
+		- sudo shutdown now -r
+
+
