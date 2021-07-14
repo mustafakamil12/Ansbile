@@ -77,6 +77,45 @@
 # we can add an alias in the of the line of each server in the Inventory file, and assign the server address to the ansible_host parameter
 # ansible_host: is an invetory paramter use to specify the FQDN or IP address of the server.
 
+# additional Inventory parameters:
+	• ansible_connection – ssh/winrm/localhost  --> how ansible connect to the server
+	• ansible_port – 22/5986					--> defines which port to connect to
+	• ansible_user – root/administrator			--> defines user
+	• ansible_ssh_pass - Password				--> defines password
+
+# now we need to do a simple test to check the connectivity between controller and targets
+
+	> ssh <target ip> 
+	- if there's any issue with ssh, that's mean we need to configure ssh on the targets.
+	- open https://fedoraproject.org/wiki/EPEL in the browser
+	- copy link of "epel-release-latest-8"
+	- wget <link from step above>
+	- rpm -ivh epel-release-*-*.noarch.rpm   --> where * version number, file already will be available on the directory.
+	- sudo yum install sshpass -y
+	- sudo shutdown now -r
+
+	- if the above not working or take to long:
+	- sudo vi /etc/ssh/ssh_config
+	- enable port 22
+
+# now let's create an Inventory file in the controller
+ 	- mkdir test-project
+ 	- cd test-project
+ 	- cat > inventory.txt
+ 	  target1 ansible_host=192.168.0.20 ansible_ssh_pass=osboxes.org
+
+# let's run ansible command:
+	- be sure that u already ssh to targets meachines before apply the command below.
+	- ansible target1 -m ping -i inventory.txt   -> -m module  -i inventory
+	- if pin success u will get pong as response
+	
+	- if u didn't already ssh to a target machine and try to apply the command above, it will failed with ssh error.
+	- u can pass the issue above by disable ost_key_checking  
+	- vi /etc/ansible/ansible.cfg
+	- uncomment -->  ost_key_checking = False
+	- the way above is not safe
+
+
 
 
 
