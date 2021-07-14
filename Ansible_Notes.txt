@@ -1,5 +1,5 @@
 ======================================================== Ansible For absolute beginner ===========================================
-
+================================================================== Inventory =====================================================
 
 
 ================================================================ Introduction ====================================================
@@ -56,5 +56,27 @@
 		- sudo yum install epel-release
 		- sudo yum install ansible
 		- ansible --version
+
+================================================================== Inventory =====================================================
+
+# Ansible deal with one or multi servers at the same time in the infra.
+
+# Ansible need to establish connection to the servers in the infra.
+
+# Ansible establish connection ---- SSH for Linux
+								 |_ PowerShell Remote
+
+# Ansible is agent less, nothing need to be installed to the target systems.
+
+# information about target systems stored in Inventory file
+
+# if u don't create Inventory file, Ansible will automatically used the default inventory file in --> /etc/ansible/hosts
+
+# Inventory file is like ini file
+
+# we can add an alias in the of the line of each server in the Inventory file, and assign the server address to the ansible_host parameter
+# ansible_host: is an invetory paramter use to specify the FQDN or IP address of the server.
+
+
 
 
