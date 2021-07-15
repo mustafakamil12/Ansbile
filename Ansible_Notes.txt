@@ -120,10 +120,128 @@
 	- the way above is not safe
 
 
-=================================================================== Yaml =========================================================
+=================================================================== YAML =========================================================
 
-# Yaml is a key: value defined data.
+# YAML: is a human-readable data-serialization language.
+# it used to store collection of data.
+# data defined in yaml file in the format of key: value.
 # rember there's a space befor value.
+
+# let's take an example for key value pair:
+
+	Fruit:	Apple
+	Vegetable:	Carrot
+	Liquid:	Water
+	Meat:	Chicken
+
+# another example of array in yaml:
+
+	Fruites:
+	- Apple		<-- the dash infront indicat that it's element of the array
+	- Orange
+	- Banana
+
+	Vegetables:
+	- Tomato
+	- Carrot
+	- Cauliflower
+
+# now let's talk about dictionary which is a set of properties which grouped together under an item 
+
+	Banana:					<--- hash/map
+		calories: 105		<--- direct value
+		fat: 0.4 g
+		carbs: 27 g
+	Grapes:
+		calories: 62
+		fat: 0.3 g
+		carbs: 16 g
+
+	- hash/map is identation senstive
+	- u can either assign direct value or hash/map
+	- in the hash/map be sure that u use equal spaces.
+
+
+# let's go to the next level list --> dict. --> list
+ 	
+ 	- to store different properties of single object we use dictionary.
+ 	- a good example is car properties
+
+ 		simple dictionary (key: value)
+ 		
+ 		car --> color: blue
+ 				model: corvette
+ 				transmission: manual
+ 				price: 20,000
+
+ 	- now if we want to split model to year and name in this case we will have dictionary within dictionary
+
+ 		car --> color: blue
+ 				model: 
+ 					name: corvette
+ 					year: 1995
+ 				transmission: manual
+ 				price: 20,000
+
+ 	- now what if we have 6 different cars.
+ 		i. in this case we need to store them in a list or array of the same type of object, like:
+
+ 			-	blue corvette
+ 			-	grey corvette
+ 			-	red corvette
+ 			-	green corvette
+ 			-	blue corvette
+ 			-	black corvette
+
+ 		ii. now if we need to store all information for each car, model, name, year, transmission and price, we need to modify the array from array of string to array of dictionary
+
+			-	color: blue
+ 				model: 
+ 					name: corvette
+ 					year: 1995
+ 				transmission: manual
+ 				price: 20,000
+
+ 			-	color: grey
+ 				model: 
+ 					name: corvette
+ 					year: 1995
+ 				transmission: manual
+ 				price: 20,000
+
+ 			-	color: red
+ 				model: 
+ 					name: corvette
+ 					year: 1995
+ 				transmission: manual
+ 				price: 20,000
+
+ 			-	color: green
+ 				model: 
+ 					name: corvette
+ 					year: 1995
+ 				transmission: manual
+ 				price: 20,000
+
+ 			-	color: blue
+ 				model: 
+ 					name: corvette
+ 					year: 1995
+ 				transmission: manual
+ 				price: 20,000
+
+ 			-	color: black
+ 				model: 
+ 					name: corvette
+ 					year: 1995
+ 				transmission: manual
+ 				price: 20,000
+
+
+ 		iii. let's take some notes:
+
+ 			- dictionary: unordered (elements)
+ 			  list: ordered
 
 
 
