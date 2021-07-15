@@ -16,7 +16,7 @@
 
 	ii. another good one, if u have a complex infrastructure that span cross public and private clouds running 100's of vms. u can easly spin vms in both clouds as well u can connect Ansible to db or service now so it will spin up asap.
 
-# all recoired info are in: https://docs.ansible.com/
+# all required info are in: https://docs.ansible.com/
 
 ================================================================== Setup Lab =====================================================
 
@@ -48,7 +48,7 @@
 		- Linked Clone
 
 	vi. change host name
-		- sudo vi /etc/hostname --> ansiblecontroller
+		- sudo vi /etc/hostname --> ansiblecontroller / target1 / target2
 		- sudo vi /etc/hosts    --> host ansiblecontroller
 		- sudo shutdown now -r
 
@@ -63,8 +63,8 @@
 
 # Ansible need to establish connection to the servers in the infra.
 
-# Ansible establish connection ---- SSH for Linux
-								 |_ PowerShell Remote
+# Ansible establish connection ---- SSH for linux 		(ssh)
+								 |_ PowerShell Remote	(winrm)
 
 # Ansible is agent less, nothing need to be installed to the target systems.
 
@@ -74,14 +74,15 @@
 
 # Inventory file is like ini file
 
-# we can add an alias in the of the line of each server in the Inventory file, and assign the server address to the ansible_host parameter
+# we can add an alias in the begining of the line of each server in the Inventory file, and assign the server address to the ansible_host parameter
 # ansible_host: is an invetory paramter use to specify the FQDN or IP address of the server.
 
 # additional Inventory parameters:
 	• ansible_connection – ssh/winrm/localhost  --> how ansible connect to the server
 	• ansible_port – 22/5986					--> defines which port to connect to
 	• ansible_user – root/administrator			--> defines user
-	• ansible_ssh_pass - Password				--> defines password
+	• ansible_ssh_pass - Password				--> defines ssh password
+	• ansible_password - password 				--> defines winrm password
 
 # now we need to do a simple test to check the connectivity between controller and targets
 
@@ -106,13 +107,16 @@
 
 # let's run ansible command:
 	- be sure that u already ssh to targets meachines before apply the command below.
+	
 	- ansible target1 -m ping -i inventory.txt   -> -m module  -i inventory
-	- if pin success u will get pong as response
+	
+	- if ping success u will get pong as response
 	
 	- if u didn't already ssh to a target machine and try to apply the command above, it will failed with ssh error.
-	- u can pass the issue above by disable ost_key_checking  
+	
+	- u can pass the issue above by disable host_key_checking  
 	- vi /etc/ansible/ansible.cfg
-	- uncomment -->  ost_key_checking = False
+	- uncomment -->  host_key_checking = False
 	- the way above is not safe
 
 
