@@ -63,8 +63,8 @@
 
 # Ansible need to establish connection to the servers in the infra.
 
-# Ansible establish connection ---- SSH for linux 		(ssh)
-								 |_ PowerShell Remote	(winrm)
+# Ansible establish connection ---- SSH for linux 					(ssh)
+								 |_ PowerShell Remote for windows	(winrm)
 
 # Ansible is agent less, nothing need to be installed to the target systems.
 
@@ -103,7 +103,7 @@
  	- mkdir test-project
  	- cd test-project
  	- cat > inventory.txt
- 	  target1 ansible_host=192.168.0.20 ansible_ssh_pass=osboxes.org
+ 	  target1 ansible_host=192.168.0.20 ansible_ssh_pass=osboxes.org   --> target1 is an alias to the target system
 
 # let's run ansible command:
 	- be sure that u already ssh to targets meachines before apply the command below.
@@ -243,6 +243,38 @@
  			- dictionary: unordered (elements)
  			  list: ordered
 
+
+
+================================================================ Playbook ========================================================
+
+# ansible planybooks are ansible's orchestration language
+
+# it's set of instructions you provide ansible to work it's magic.
+
+# let's take a look on simple and complex ansible playbook
+
+# Simple Ansible Playbook
+
+- Run command1 on server1
+- Run command2 on server2
+- Run command3 on server3
+- Restarting server1
+- Restarting server2
+- Restarting server3
+
+# Complex Ansible Playbook
+
+- Deploy 50 VMs on Public Cloud
+- Deploy 50 VMs on private Cloud
+- Provision Storage to all VMs
+- Setup Network Configuration on Private VMs
+- Setup cluster configuration
+- Configure Web server on 20 Public VMs
+- Configure DB server on 20 Privatge VMs
+- Setup Loadbalancing between we server VMs
+- Setup Monitoring components
+- Install and Configure backup clients on VMs
+- Update CMDB database with new VM Information
 
 
 
