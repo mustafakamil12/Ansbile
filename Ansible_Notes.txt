@@ -276,6 +276,103 @@
 - Install and Configure backup clients on VMs
 - Update CMDB database with new VM Information
 
+# all playbook written in yaml format --> playbook.yml
 
+# Playbook –> A single YAML file that contain plays.
+ 	- Play – Defines a set of activities (tasks) to be run on hosts
+	- Task – An action to be performed on the host like:
+		i. Execute a command 
+		ii. Run a script 
+		iii. Install a package
+		iv. Shutdown/Restart
+
+# let's take a look on a real simple ansible playbook.yml
+
+-
+  name: Play 1
+  hosts: localhost
+  tasks:
+	- name: Execute 
+	  command ‘date’ command: date
+	- name: Execute script on server 
+	  script: test_script.sh
+	- name: Install httpd service 
+	  yum:
+		name: httpd
+		state: present
+	- name: Start web server
+	  service:
+		name: httpd
+		state: started
+
+# The playbook above is 
+	1. single play
+	2. named play 1 
+	3. the goal of this play is to run set of activities one after the other on the:
+	4. localhost
+	5. the host that u wanna to run these actions is defined at play level
+	6. in our case we just wanna test on our localhost, that's why hosts is set to localhost
+	7. hosts could be anything from your Inventory file.  <--- important
+	8. tasks to be implement on the target which is localhost. :)
+
+# let's take a look on this example where there're 2 plays in one playbook
+
+# The playbook contain a list of 2 plays, that's mean the playbook is a list of dictionaries 
+
+# each paly is a dictionary and had set of properties: name, hosts and tasks
+
+# in the hosts you can specify any host or group bust you must be sure that host or group first defined in the Inventory.
+
+# if u specify a group in the hosts, the listed tasks will be executed on all the hosts listrd under that group.
+
+-
+  name: Play 1
+  hosts: localhost
+  tasks:
+	- name: Execute 
+	  command ‘date’ command: date
+	- name: Execute script on server 
+	  script: test_script.sh
+
+-
+  name: Play 2
+  hosts: localhost
+  tasks:
+	- name: Install httpd service 
+	  yum:
+		name: httpd
+		state: present
+	- name: Start web server
+	  service:
+		name: httpd
+		state: started
+
+# general example of inventory
+
+localhost
+
+server1.company.com
+server2.company.com
+
+[mail]
+server3.company.com
+server4.company.com
+
+[db]
+server5.company.com
+server6.company.com
+
+[web]
+server7.company.com
+server8.company.com
+
+# if u go back to playbook example and exactly on tasks u can see we used:
+	- command
+	- script
+	- yum
+	- service
+
+	- These are modules, there are 100s of module that u can get all info. required on the ansible docs. or by use the command 
+	> ansible-doc -l
 
 
