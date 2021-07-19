@@ -409,6 +409,22 @@ server8.company.com
 
 ------------------------------------------------------------- How to use Atom ----------------------------------------------------
 
+# Download atom ide
+
+# now create project in atom with <ansible-demos-excercises> for example and test purposes.
+
+# create directory in the ansible-controller with same name <ansible-demos-excercises>
+
+# in atom within <ansible-demos-excercises> create a directory named <exercise-0-pingtest> 
+
+# within exercise-0-pingtest create a file named <inventory.txt>
+
+# there're many ways to test ur code's syntax if it's ok or not
+	- u can use YAML Lint from ur web browser
+	- u can google atom yaml lint to get atom package <linter-js-yaml>
+		> use this command to install the package
+		> apm install linter-js-yaml
+# 
 
 
 
