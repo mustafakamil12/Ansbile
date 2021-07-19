@@ -375,4 +375,42 @@ server8.company.com
 	- These are modules, there are 100s of module that u can get all info. required on the ansible docs. or by use the command 
 	> ansible-doc -l
 
+# to execute any playbook use
+	> ansibile-playbook playbook.yml
+
+# for help about to execute ansible playbook
+	> ansible-playbook --help
+
+# u can use ansible command directly in the contrller just for testing connectivity between controller and the target
+	- let's take ping command above as an example, it's used once without playbook and that's it.
+	- let's take a look on this commands.
+	> ansible <target> -a <command>
+	> ansible all -a "/sbin/reboot"  <-- used to reboot all servers.
+	>ansible <target> -m <module>
+	> ansible target1 -m ping
+
+	- if u need to ping both targets
+	> ansible all -m ping -i inventory.txt
+
+# instead of using commands individually, we can use playbook to apply multi task in one line.
+	
+	- let's create a playbook file first
+	> vi playbook-pingtest.yml
+	-
+	 name: Test connectivity to target servers
+	 hosts: all
+	 tasks:
+	  - name: Ping test
+	    ping:
+
+# now to execute the playbook above
+	> ansible-playbook playbook-pingtest.yaml -i inventory.txt
+
+
+------------------------------------------------------------- How to use Atom ----------------------------------------------------
+
+
+
+
+
 
