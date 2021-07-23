@@ -409,6 +409,8 @@ server8.company.com
 
 ------------------------------------------------------------- How to use Atom ----------------------------------------------------
 
+# when u r working with big project it's better to use ide instead of using vi.
+
 # Download atom ide
 
 # now create project in atom with <ansible-demos-excercises> for example and test purposes.
@@ -424,8 +426,39 @@ server8.company.com
 	- u can google atom yaml lint to get atom package <linter-js-yaml>
 		> use this command to install the package
 		> apm install linter-js-yaml
-# 
 
+# inventory.txt will include:
+	target1 ansible_host=192.168.0.30 ansible_connection=ssh ansible_ssh_pass=osboxes.org
+	target2 ansible_host=192.168.0.32 ansible_connection=ssh ansible_ssh_pass=osboxes.org
+
+# playbook-pingtest.yml will include:
+	-
+	  name: Test Connectivity To Target Servers
+	  hosts: all
+	  tasks:
+	   - name: Ping test
+	     ping:
+
+
+# now we can just copy the files above to the controller using FileZilla but working with large number files it's good to use
+
+# Remote sync package for atom. to sync files in your local system with remote controller.
+	- install the package using the command below:
+	> apm install remote-sync
+
+# now R.C on the root directory in ur atom and u can see --> Remote Sync. :)
+
+# to configure ur Remote Sync: R.C on root directory in atom --> Remote Sync --> configure 
+ - Hostname: 192.168.0.25	<-- controller IP.
+ - Port: 22
+ - Target directory: /home/osboxes/ansible-demos-excercises
+ - Username: osboxes
+ - Password: osboxes.org
+ - UploadOnSave: √
+
+# now R.C on the ansible-demos-excercises folder in atom --> Upload Folder 
+
+# check ur files now on the target controller.
 
 
 
