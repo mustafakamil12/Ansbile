@@ -460,6 +460,8 @@ server8.company.com
 
 # check ur files now on the target controller.
 
+# sometime when u copy file from folder to another (for example the inventory file from exercise-0-pingtest to exercise-1-pingtest) maybe it's not been sync to the target coz there's no change and no new save in the file that's mean (UploadOnSave) it will not work and so we need to R.C --> Remote Sync --> Upload Folder.
+
 
 
 
