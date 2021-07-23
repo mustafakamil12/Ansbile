@@ -463,5 +463,149 @@ server8.company.com
 # sometime when u copy file from folder to another (for example the inventory file from exercise-0-pingtest to exercise-1-pingtest) maybe it's not been sync to the target coz there's no change and no new save in the file that's mean (UploadOnSave) it will not work and so we need to R.C --> Remote Sync --> Upload Folder.
 
 
+============================================================== Ansible Modules ===================================================
+
+# ansible modules are categorized into various group based on their functionality
+
+	• System 		--> actions to be perfomed at system level
+ 	• Commands 		--> used to execute commands or scripts on the target system
+	• Files 		--> work with files
+	• Database 		--> work with databases
+	• Cloud 		--> work with clouds
+	• Windows 		--> to use ansible in windows environment
+	• More..
+
+	-System: 	 - User
+				 - Group
+				 - Hostname
+				 - Iptables
+				 - Lvg
+				 - Lvol
+				 - Make
+				 - Mount
+				 - Ping
+				 - Timezone
+				 - Systemd
+				 - Service
+
+	- Commands: - Command
+				- Expect
+				- Raw
+				- Script
+				- Shell
+
+	- Files: 	- Acl
+				- Archive
+				- Copy
+				- File
+				- Find
+				- Lineinfile
+				- Replace
+				- Start
+				- Temple
+				- Unarchive
+
+	- Database: - Mongodb
+				- Mssql
+				- Mysql
+				- Postgresql
+				- Proxysql
+				- vertica
+
+	- Cloud:    - Amazon
+				- Atomic
+				- Azure
+				- Centurylink
+				- Cloudscale
+				- Cloudstack
+				- Digital Ocean
+				- Docker
+				- Google
+				- Linode
+				- Openstack
+				- Rackstack
+				- Smartos
+				- Softlayer
+				- VMware
+
+	- Windows:  - Win_copy
+				- Win_command
+				- Win_domain
+				- Win_file
+				- Win_iis_website
+				- Win_ msg
+				- Win_msi
+				- Win_package
+				- Win_ping
+				- Win_patch
+				- Win_path
+				- Win_robocopy
+				- Win_regedit
+				- Win_shell
+				- Win_service
+				- Win_user
+
+# there're a lot of modules used in ansible all available in doc.
+
+# sometime in command document u see this phrase <free_form>: this mean this command is free_form and not accepted parameters like cat.
+
+# one of the other important module is <Script>: runs local script on a remote node after transfering it.
+	- copy script to remote systems
+	- execute script on remote systems
+
+# another good module is <service>: used to maintain service on target system
+	- start
+	- stop
+	- restart
+
+	- it's not fre_form so that's mean it's need parameters like name and state
+	- there're 2 ways to pass the parameters 
+		i. pass as parameters of service:
+			service: name=postgresql state=started
+
+		ii. pass as dictionary map format:
+			service:
+				name: postgresql
+				state: started
+
+# look at the playbook below:
+	-
+	name: Start Services in order hosts: localhost
+	tasks:
+		- name: Start the database service 
+		  service: name=postgresql state=started
+
+		- name: Start the httpd service 
+		  service: name=httpd state=started
+
+		- name: Start the nginx service service:
+		       name: nginx
+		       state: started 
+
+# the question is why state is <started and not start>?  <-- idempotency
+	- that to Ensure service httpd is started
+	  If httpd is not already started => start it 
+	  If httpd is already started, =>do nothing
+
+# another butiful module is linefile used to search for a line in a file and replace it or add it if doesn't exist.
+	- need to add 1 new lines to /etc/resolv.conf
+		nameserver 10.1.250.10
+
+	- so the playbook will be:
+
+		-
+			name: Add DNS server to resolv.conf 
+			hosts: localhost
+			tasks:
+				- lineinfile:
+				path: /etc/resolv.conf
+				line: 'nameserver 10.1.250.10'
+
+	- but if u take a look on the script above u can see that we can do the same with shell script below:
+		- #Sample script
+			> echo “nameserver 10.1.250.10” >> /etc/resolv.conf
+
+	- the problem with shell script if u run this script multiple time u will see that the required line will be added multiple times.
 
 
+================================================================ Variables =======================================================
