@@ -609,3 +609,45 @@ server8.company.com
 
 
 ================================================================ Variables =======================================================
+
+# variables use jinja2 templating
+
+# variable can be defined in playbook under vars as key value
+
+# take a look on the playbook below:
+
+ -
+	name: Add DNS server to resolv.conf 
+	hosts: localhost
+	vars:
+		dns_server: 10.1.250.10
+    tasks:
+        - lineinfile:
+			path: /etc/resolv.conf
+			line: 'nameserver '{{dns_server}}'
+ 
+
+# another way to define variable within inventory file
+
+	-
+		name: Set Firewall Configurations 
+		hosts: web
+		tasks:
+			- firewalld:
+				service: https 
+				permanent: true 
+				state: enabled
+		
+			- firewalld: 
+				port: '{{http_port}}'/tcp 
+				permanent: true
+				state: disabled
+			- firewalld:
+				port: '{{snmp_port}}'/udp 
+				permanent: true
+				state: disabled
+			- firewalld:
+				source: '{{inter_ip_range}}'/24 
+				Zone: internal
+				state: enabled
+
