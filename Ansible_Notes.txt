@@ -740,3 +740,65 @@ server8.company.com
 
 # loops is a directive to execute the same task multiple number of times.
 
+# item is a default loop variable.
+
+# to understand how loops work u need to visualize loops:
+	
+	i. original playbook that will be used...
+
+	-
+	  name: Create users
+	  hosts: localhost
+	  tasks:
+	   - user: name='{{ item }}'	state=present
+		 loop:
+			- joe
+			- george 
+			- ravi
+			- mani
+			- kiran 
+			- jazlan 
+			- emaan 
+			- mazin 
+			- izaan 
+			- mike
+			- menaal 
+			- shoeb 
+			- rani
+	
+	ii. loops visualized:
+
+	-
+	  name: Create users
+	  hosts: localhost
+	  tasks:
+
+	  -  var:  item=joe
+	     user: name= "{{ item }}"		state=present
+	
+	  - var: item=george				
+		user: name= "{{ item}}"			state=present
+	
+	  - var: item=ravi					
+	    user: name= "{{ item }}"		state=present
+	  
+	  - var: item=mani
+		user: name= "{{ item }}"		state=present
+	  
+	  - var: item=kiran
+		user: name= "{{ item }}"		state=present
+	  
+	  - var: item=jazlan
+		user: name= "{{ item }}"		state=present
+
+	  - var: item=emaan
+	    user: name= "{{ item }}"		state=present
+	
+	  - var: item=mazin
+		user: name= "{{ item }}"		state=present
+	  
+	  - var: item=izaan
+		user: name= "{{ item }}"
+
+
+ 
