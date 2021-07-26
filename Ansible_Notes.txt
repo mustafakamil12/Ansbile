@@ -735,3 +735,8 @@ server8.company.com
 	        body: Httpd Service is down
 	        when: result.stdout.find('down') != -1
 
+
+================================================================== Loops =========================================================
+
+# loops is a directive to execute the same task multiple number of times.
+
