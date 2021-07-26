@@ -612,7 +612,7 @@ server8.company.com
 
 # variables use jinja2 templating
 
-# variable can be defined in playbook under vars as key value
+# variable can be defined in playbook under vars directive as key value
 
 # take a look on the playbook below:
 
@@ -650,4 +650,27 @@ server8.company.com
 				source: '{{inter_ip_range}}'/24 
 				Zone: internal
 				state: enabled
+
+# we can use the variables in the inventory, look at the inventory file below:
+
+#Sample Inventory File
+	
+	Web  http_port=8081	snmp_port=161-162 	inter_ip_range=192.0.2.0
+
+# best scenario is to create variable file with the name of the host:
+
+#Sample variable File – web.yml   <-- host variable file
+
+	http_port: 8081 
+	snmp_port: 161-162 
+	inter_ip_range: 192.0.2.0
+
+# Jinja2 Example:
+	source: {{ inter_ip_range }} 					<--- x
+	source: ‘{{ inter_ip_range }}’					<--- √
+	source: SomeThing{{ inter_ip_range }}SomeThing	<--- √
+
+
+
+
 
