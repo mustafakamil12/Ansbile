@@ -271,7 +271,7 @@
 - Setup cluster configuration
 - Configure Web server on 20 Public VMs
 - Configure DB server on 20 Privatge VMs
-- Setup Loadbalancing between we server VMs
+- Setup Loadbalancing between web server VMs
 - Setup Monitoring components
 - Install and Configure backup clients on VMs
 - Update CMDB database with new VM Information
@@ -293,7 +293,7 @@
   hosts: localhost
   tasks:
 	- name: Execute 
-	  command ‘date’ command: date
+	  command: date
 	- name: Execute script on server 
 	  script: test_script.sh
 	- name: Install httpd service 
@@ -321,7 +321,7 @@
 
 # each paly is a dictionary and had set of properties: name, hosts and tasks
 
-# in the hosts you can specify any host or group bust you must be sure that host or group first defined in the Inventory.
+# in the hosts you can specify any host or group but you must be sure that host or group first defined in the Inventory.
 
 # if u specify a group in the hosts, the listed tasks will be executed on all the hosts listrd under that group.
 
