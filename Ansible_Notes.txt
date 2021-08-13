@@ -330,7 +330,7 @@
   hosts: localhost
   tasks:
 	- name: Execute 
-	  command ‘date’ command: date
+	  command: date
 	- name: Execute script on server 
 	  script: test_script.sh
 
