@@ -1,0 +1,59 @@
+# configure virtualbox side
+	- virtualbox -> file -> host network manager -> create (vboxnet0)  -> configure adapter manually ipv4: 192.168.56.1
+																	   -> ipv4 network mask: 255.255.255.0
+																	   -> DHCP Server -> server address: 192.168.56.100
+																	   				  -> server mask: 255.255.255.0
+																	   				  -> lower address bound: 192.168.56.101
+																	   				  -> upper address bound: 192.168.56.254
+# configure laptop
+	sudo sysctl -w net.inet.ip.forwarding=1
+	sudo ifconfig <laptop wifi name> down
+	sudo ifconfig vboxnet0 down
+	sudo ifconfig <bridge1> create		<-- new bridge name
+	sudo ifconfig bridge1 addm vboxnet0 addm <laptop wifi name>
+	sudo ifconfig bridge1 <laptop ip add> netmask 255.255.255.0 up
+	sudo route -n add -net 192.168.56.0/24 <laptop wifi name>
+
+# with each vm guest configure network as below:
+	- adapter 1:
+		- attached to: Host-only adapter
+		- name: vboxnet0
+		- promiscuous mode: deny
+	- adapter 2:
+		- attached to: NAT
+		- port forwarding: 
+		  Name	Protocol	Host IP 	Host Port 	Guest IP 	Guest Port  <-- Guest IP is the ip of NAT in vm (enp0s8)
+		  ssh		TCP		127.0.0.1 		1111	10.0.3.15		22
+
+		- change the Guest Port for each vm guest
+
+# inside vm guest:
+	sudo ifconfig enp0s3 192.168.56.101 netmask 255.255.255.0 arp
+	sudo route add default gw 192.168.56.1
+
+# u may also need to apply the commands below in the laptop:
+	VBoxManage modifyvm "vm guest name" --natpf1 "SSH,tcp,127.0.0.1,<vm guest port/ex: 1111>,<guest NAT ip:10.0.3.15>,22"
+
+# to ssh to the vm guest:
+	ssh -p <vm guest port/ex: 1111> <login>@127.0.0.1
+
+# finally the network should look like:
+WAN <---> Router/Switch (& port fw to VM & static route to 192.168.56.0/24) <-----> Mac <----------------------> VM
+           192.168.0.1                                                    192.168.0.12|192.168.56.1   192.168.56.101 (& default gw 
+           		|																					or static route to 192.168.0.0/24)
+                ¦
+                ¦
+             other Mac(s)
+           192.168.0.3|4|5... (& static route to 192.168.56.0/24)
+
+
+# when u done with bridge1 or <bridge name> and u need to remove it 
+	sudo ifconfig bridge1 down
+	sudo ifconfig bridge1 deletem <laptop wifi name> deletem vboxnet0
+	sudo ifconfig bridge1 destroy
+
+# disble forwarding on the host do the following:
+	sudo sysctl -w net.inet.ip.forwarding=0
+
+# to remove static routes on the Mac enter:
+	sudo route -n delete -net 192.168.56.0/24 <laptop wifi name>
