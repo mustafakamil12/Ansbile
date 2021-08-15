@@ -384,10 +384,10 @@ server8.company.com
 # u can use ansible command directly in the contrller just for testing connectivity between controller and the target
 	- let's take ping command above as an example, it's used once without playbook and that's it.
 	- let's take a look on this commands.
-	> ansible <target> -a <command>
-	> ansible all -a "/sbin/reboot"  <-- used to reboot all servers.
-	>ansible <target> -m <module>
-	> ansible target1 -m ping
+	> ansible <target> -a <command> -i inventory.txt
+	> ansible all -a "/sbin/reboot" -i inventory.txt  <-- used to reboot all servers.
+	>ansible <target> -m <module> -i <inventory>
+	> ansible target1 -m ping -i inventory.txt
 
 	- if u need to ping both targets
 	> ansible all -m ping -i inventory.txt

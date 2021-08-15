@@ -28,7 +28,7 @@
 		- change the Guest Port for each vm guest
 
 # inside vm guest:
-	sudo ifconfig enp0s3 192.168.56.101 netmask 255.255.255.0 arp
+	sudo ifconfig enp0s3 192.168.56.101 netmask 255.255.255.0 arp     <-- where enp0s3 is the nic attached to Host only.
 	sudo route add default gw 192.168.56.1
 
 # u may also need to apply the commands below in the laptop:
@@ -40,11 +40,11 @@
 # finally the network should look like:
 WAN <---> Router/Switch (& port fw to VM & static route to 192.168.56.0/24) <-----> Mac <----------------------> VM
            192.168.0.1                                                    192.168.0.12|192.168.56.1   192.168.56.101 (& default gw 
-           		|																					or static route to 192.168.0.0/24)
-                ¦
-                ¦
-             other Mac(s)
-           192.168.0.3|4|5... (& static route to 192.168.56.0/24)
+           		|															or static route to 192.168.0.0/24)
+	               ¦
+	               ¦
+	             other Mac(s)
+	           192.168.0.3|4|5... (& static route to 192.168.56.0/24)
 
 
 # when u done with bridge1 or <bridge name> and u need to remove it 
