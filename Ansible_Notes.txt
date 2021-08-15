@@ -440,7 +440,7 @@ server8.company.com
 	     ping:
 
 
-# now we can just copy the files above to the controller using FileZilla but working with large number files it's good to use
+# now we can just copy the files above to the controller using FileZilla but working with large number files it's good to use:
 
 # Remote sync package for atom. to sync files in your local system with remote controller.
 	- install the package using the command below:
@@ -449,8 +449,8 @@ server8.company.com
 # now R.C on the root directory in ur atom and u can see --> Remote Sync. :)
 
 # to configure ur Remote Sync: R.C on root directory in atom --> Remote Sync --> configure 
- - Hostname: 192.168.0.25	<-- controller IP.
- - Port: 22
+ - Hostname: 192.168.0.25	or 127.0.0.1 <-- controller IP.
+ - Port: 22 or 1111 :)
  - Target directory: /home/osboxes/ansible-demos-excercises
  - Username: osboxes
  - Password: osboxes.org
@@ -475,7 +475,8 @@ server8.company.com
 	• Windows 		--> to use ansible in windows environment
 	• More..
 
-	-System: 	 - User
+	-System: 	 
+				 - User
 				 - Group
 				 - Hostname
 				 - Iptables
@@ -488,13 +489,15 @@ server8.company.com
 				 - Systemd
 				 - Service
 
-	- Commands: - Command
+	- Commands: 
+				- Command
 				- Expect
 				- Raw
 				- Script
 				- Shell
 
-	- Files: 	- Acl
+	- Files: 	
+				- Acl
 				- Archive
 				- Copy
 				- File
@@ -505,14 +508,16 @@ server8.company.com
 				- Temple
 				- Unarchive
 
-	- Database: - Mongodb
+	- Database: 
+				- Mongodb
 				- Mssql
 				- Mysql
 				- Postgresql
 				- Proxysql
 				- vertica
 
-	- Cloud:    - Amazon
+	- Cloud:    
+				- Amazon
 				- Atomic
 				- Azure
 				- Centurylink
@@ -528,7 +533,8 @@ server8.company.com
 				- Softlayer
 				- VMware
 
-	- Windows:  - Win_copy
+	- Windows:  
+				- Win_copy
 				- Win_command
 				- Win_domain
 				- Win_file
