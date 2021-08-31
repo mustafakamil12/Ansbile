@@ -83,10 +83,10 @@
 
 # additional Inventory parameters:
 	• ansible_connection – ssh/winrm/localhost  --> how ansible connect to the server
-	• ansible_port – 22/5986					--> defines which port to connect to
-	• ansible_user – root/administrator			--> defines user
-	• ansible_ssh_pass - Password				--> defines ssh password
-	• ansible_password - password 				--> defines winrm password
+	• ansible_port – 22/5986										--> defines which port to connect to
+	• ansible_user – root/administrator					--> defines user
+	• ansible_ssh_pass - Password								--> defines ssh password
+	• ansible_password - password 							--> defines winrm password
 
 # now we need to do a simple test to check the connectivity between controller and targets
 
