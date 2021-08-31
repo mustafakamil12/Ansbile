@@ -43,7 +43,7 @@
 		- version: other linux 64
 		- Memory: 2048 MB
 		- processor: 2
-		- network: bridge
+		- network: bridge   # will be use a special bridge-nat configuration...
 
 	v. clone from the template:
 		- Name: ansibel-controller / ansible-target1 /ansible-target2
