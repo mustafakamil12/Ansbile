@@ -154,12 +154,12 @@
 
 	Banana:					<--- hash/map
 		calories: 105		<--- direct value
-		fat: 0.4 g
-		carbs: 27 g
+		fat: 0.4g
+		carbs: 27g
 	Grapes:
 		calories: 62
-		fat: 0.3 g
-		carbs: 16 g
+		fat: 0.3g
+		carbs: 16g
 
 	- hash/map is identation senstive
 	- u can either assign direct value or hash/map
