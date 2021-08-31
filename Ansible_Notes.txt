@@ -68,7 +68,7 @@
 # Ansible need to establish connection to the servers in the infra.
 
 # Ansible establish connection ---- SSH for linux 					(ssh)
-								 |_ PowerShell Remote for windows	(winrm)
+								 									|_ PowerShell Remote for windows	(winrm)
 
 # Ansible is agent less, nothing need to be installed to the target systems.
 
