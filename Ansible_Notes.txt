@@ -173,14 +173,16 @@
 
  		simple dictionary (key: value)
  		
- 		car --> color: blue
+ 		car --> 
+ 				color: blue
  				model: corvette
  				transmission: manual
  				price: 20,000
 
  	- now if we want to split model to year and name in this case we will have dictionary within dictionary
 
- 		car --> color: blue
+ 		car --> 
+ 				color: blue
  				model: 
  					name: corvette
  					year: 1995
