@@ -12,7 +12,8 @@
 	ii. Configuration Management
 	iii. Continuous Delivery
 	iv. Application Deployment
-	v. Security Compliance
+	v. Security Compliance : ensuring that your organization meets the standards for data privacy and security that apply to your 
+		 specific industry
 
 # There many of examples that Ansible really can be the most powerfull tool to use with:
 	i. if u have many web servers and database servers, you need to reboot these servers, u can write a play book to start power off the web servers first and then power off the database servers and then power on db servers and then web servers.
