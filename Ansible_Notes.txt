@@ -4,6 +4,9 @@
 
 ================================================================ Introduction ====================================================
 
+# Ansible: Ansible is an open-source software provisioning, configuration management, and application-deployment tool enabling 
+  infrastructure as code.
+
 # Why Ansible:
 	i. Provisioning
 	ii. Configuration Management
