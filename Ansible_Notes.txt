@@ -152,7 +152,7 @@
 
 # now let's talk about dictionary which is a set of properties which grouped together under an item 
 
-	Banana:					<--- hash/map
+	Banana:						<--- hash/map
 		calories: 105		<--- direct value
 		fat: 0.4g
 		carbs: 27g
