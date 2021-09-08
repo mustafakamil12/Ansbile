@@ -570,7 +570,7 @@ server8.company.com
 	- stop
 	- restart
 
-	- it's not fre_form so that's mean it's need parameters like name and state
+	- it's not free_form so that's mean it's need parameters like name and state
 	- there're 2 ways to pass the parameters 
 		i. pass as parameters of service:
 			service: name=postgresql state=started
@@ -679,7 +679,7 @@ server8.company.com
 
 # Jinja2 Example:
 	source: {{ inter_ip_range }} 					<--- x
-	source: ‘{{ inter_ip_range }}’					<--- √
+	source: '{{ inter_ip_range }}'					<--- √
 	source: SomeThing{{ inter_ip_range }}SomeThing	<--- √
 
 
