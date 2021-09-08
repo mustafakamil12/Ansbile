@@ -298,18 +298,18 @@
   name: Play 1
   hosts: localhost
   tasks:
-	- name: Execute 
+	- name: Execute command
 	  command: date
 	- name: Execute script on server 
 	  script: test_script.sh
 	- name: Install httpd service 
 	  yum:
-		name: httpd
-		state: present
+			name: httpd
+			state: present
 	- name: Start web server
 	  service:
-		name: httpd
-		state: started
+			name: httpd
+			state: started
 
 # The playbook above is 
 	1. single play
