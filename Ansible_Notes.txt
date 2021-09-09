@@ -1037,7 +1037,7 @@ MySQL-Role
 			hosts: db-server
 			roles:
 			    - role: geerlingguy.mysql
-			      become: yes
+			      become: yes 								<--- run task with specific privilage like sudo
 			      vars:
 			        mysql_user_name: db-user
 
