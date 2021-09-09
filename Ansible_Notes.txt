@@ -636,7 +636,7 @@ server8.company.com
     tasks:
         - lineinfile:
 			path: /etc/resolv.conf
-			line: 'nameserver '{{dns_server}}'
+			line: 'nameserver {{dns_server}}'
  
 
 # another way to define variable within inventory file
@@ -667,15 +667,17 @@ server8.company.com
 
 #Sample Inventory File
 	
-	Web  http_port=8081	snmp_port=161-162 	inter_ip_range=192.0.2.0
+	Web  ansible_host=192.168.0.30 ansible_connection=ssh ansible_ssh_pass=osboxes.org http_port=8081	snmp_port=161-162 	inter_ip_range=192.0.2.0
 
 # best scenario is to create variable file with the name of the host:
 
-#Sample variable File – web.yml   <-- host variable file
+# Sample variable File – web.yml   <-- host variable file
 
 	http_port: 8081 
 	snmp_port: 161-162 
 	inter_ip_range: 192.0.2.0
+
+# but we need to use vars_files instead of vars in playbook
 
 # Jinja2 Example:
 	source: {{ inter_ip_range }} 					<--- x
