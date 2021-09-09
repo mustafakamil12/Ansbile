@@ -709,8 +709,9 @@ server8.company.com
 		  yum: 
 			name: nginx
 			state: present
-	      when: ansible_os_family == "RedHat" or
-	      		ansible_os_family == "SUSE"
+	      
+	    when: ansible_os_family == "RedHat" or
+	      ansible_os_family == "SUSE"
 
 # ansible_os_family is a built-in variable that ansible populate with the flavor of operating system.
 
@@ -755,10 +756,10 @@ server8.company.com
 # loops is a directive to execute the same task multiple number of times.
 
 # There's 2 ways to use loop in playbook
-	a. loop:   		<-- used for simple loops
-	b. with_: 		<-- in old version thers' only <with_items> for loop.
+	a. loop:   				<-- used for simple loops
+	b. with_itmes: 		<-- in old version thers' only <with_items> for loop.
 
-# item is a default loop variable.
+# item: is a default loop variable.
 
 # to understand how loops work u need to visualize loops:
 	
@@ -828,7 +829,7 @@ server8.company.com
 		- user: name='{{ time.name }}'		state=present 	uid=1'{{ time.uid }}'
 		loop:
 
-		  - name: joe       --|-->  or we can use json format - 
+		  - name: joe   --|-->  or we can use json format - 
 		  	uid: 1010		--| 
 		  - name: george
 		  	uid: 1011
